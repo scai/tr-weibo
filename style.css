@@ -21,10 +21,12 @@ a:active, a:hover{ color: #ffffff; text-decoration: underline; }
 #tr-logo { float:left; width:48px; height:48px; margin:20px; vertical-align:middle;
            border-radius:5px; }        
 
-#stage { margin:40px 0 0 0; padding:0; }
-#stage-content {  
+#stage { margin-top:auto 0 auto 0; padding:0; background-color:#333; }
+#stage ul { position:relative; overflow:hidden; list-style:none;}
+#stage li {  display:inline-block;
     background-color:#fff; width:600px; border-radius:10px;
-    margin:0 auto 0 auto; padding:0 }
+    margin:auto 10px auto 10px; padding:0 }
+    
 #stage .status { 
     padding:20px; text-align:justify; font-size: 20px;
      }

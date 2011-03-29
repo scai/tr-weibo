@@ -174,17 +174,16 @@ function updateLatest(latest) {
 
 function nextItem() {
     if(idx < 0) idx = 0;
-	var item = items[idx];
-	$('#stage-content').fadeOut(function(){
-	    var content = $('#stage-content').empty()
-	                                     .append(item)
-	                                     .fadeIn();
-	    $('#stage').animate({height:content.height()});
-	});	
-	
-	idx = (idx + 1) % items.length;
 
-	slideShowHandle = setTimeout("nextItem()", slideShowInterval);
+    var ul = $('#stage ul').empty();
+    ul.css('width', items.length * 630);
+    $.each(items, function(i, item) {
+        var content = $('<li>').addClass('card')
+                               .append(item)
+                               .appendTo(ul);
+    });
+                           
+	//slideShowHandle = setTimeout("nextItem()", slideShowInterval);
 }
 
 function render(entry) {
@@ -227,19 +226,22 @@ function onResume() {
     nextItem();
 }
 
+var idx = 0;
+
 function onNext() {
     notify('下一个');
-    clearTimeout(slideShowHandle);
-    nextItem();
-    onPause();
+    idx++;
+    $('#stage ul').animate({
+        'left': -idx * 620
+    });
 }
 
 function onPrev() {
     notify('前一个');
-    clearTimeout(slideShowHandle);
-    idx -= 2;
-    nextItem();
-    onPause();
+    idx--;
+    $('#stage ul').animate({
+        'left': -idx * 620
+    });
 }
 
 function onShowPostForm() {

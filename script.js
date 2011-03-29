@@ -21,17 +21,22 @@ function bootstrap()
 {
 	// jQuery ready
 	$(document).ready(function(){
-		$('#updated').hide();		
-		$('body').keyup(function(event) {
+		$('#updated').hide();	
+			
+		$(document).keydown(function(event) {
           if (event.keyCode == '37') {
             onPrev();
-            event.preventDefault();
-            return false;
           } else if (event.keyCode == '39') {
             onNext();
-            event.preventDefault();
-            return false;
+          } else if (event.keyCode == '32') {
+            togglePause();
+          } else {
+            return true;
           }
+
+          event.preventDefault();
+          return false;
+      
         });
 	    initializeWeiboJS();
 	});
@@ -52,6 +57,11 @@ function initializeWeiboJS() {
 
 	    // check if user is logged in
 		setStateLoggedOut();
+
+		$('#login-box').animate({
+		  height:"60px",
+		  opacity:"1"
+		});
     });  
 }
 
@@ -198,11 +208,11 @@ var pause = false;
 function togglePause() {
     pause = !pause;
     if(pause) {
-        notify('继续自动播放');
-        onResume();
-    } else {
         notify('暂停播放');
         onPause();
+    } else {
+        notify('继续自动播放');
+        onResume();
     }   
 }
 

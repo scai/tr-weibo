@@ -11,7 +11,8 @@ a:active, a:hover{ color: #ffffff; text-decoration: underline; }
          text-align:left; font-size: 16px; color:#666;  }
 #about p { margin:0; padding:20px; }
 
-#login-box { position: fixed; bottom:0; left:0; right:0; }
+#login-box { position: fixed; bottom:0; left:0; right:0;
+             height:0; opacity:0; }
 #login-box a { width:600px; height:60px;  border-radius:10px 10px 0 0; 
              display:block; margin:0 auto 0 auto;
              background: white url('images/login_48.png') center no-repeat; } 

@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="keywords" content="TR,新浪微博应用,微博应用,新浪微博阅读器" /> 
+<meta name="description" content="TR是一个精简的新浪微博阅读器，使用你的新浪微博帐号登录后，你关注的微博就会用幻灯片播放。" /> 
+<meta name="author" content="蔡邵霆 Shaoting Cai" /> 
+<meta name="copyright" content="2010-2011 Shaoting Cai All Rights Reserved" /> 
+<title>TR - 微博阅读</title>
+<link href="style.css" type="text/css" rel="stylesheet"/> 
+<link rel="icon" type="image/png" href="tr.png">
+<script type="text/javascript" src="http://js.wcdn.cn/t3/platform/js/api/wb.js" charset="utf-8" ></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+
+<div id="about">
+  <img src="tr_s.png" id="tr-logo">
+  <p>TR是一个精简的新浪微博阅读器，使用你的新浪微博帐号登录后，你关注的微博就会用幻灯片播放。</p>
+</div>
+
+<div id="login-box">
+    <a href="#" onclick="onLogin()"></a>
+</div>
+  
+<div id="screen">
+  <div id="stage">
+    <div id="stage-content">
+        <div id="stage-wait">正在读取最新微博，请稍候。</div>
+    </div>
+  </div>
+</div>
+
+<div id="updated">更新中……</div>
+
+
+<div id="toolbar">
+
+  <!-- show after login -->
+  
+  <div id="user-options">
+  <ul>
+  	<li><a href="#" onclick="onLogout()">
+  	    <span>注销 [</span><span id="username">用户</span><span>]</span>
+  	    </a>
+  	</li>
+    <!--<li><a href="#">设定</a></li>-->
+	<!--<li><a href="#">帮助</a></li>-->
+	<li><a href="#" onclick="togglePause();" id="pause">暂停</a></li>
+	<li><a href="#" onclick="onPrev();" id="prev">&lt;&lt;</a></li>	
+	<li><a href="#" onclick="onNext();" id="next">&gt;&gt;</a></li>
+	<li><a href="#" onclick="onAbout();">关于 TR</a></li>
+  </ul>
+  </div>
+  
+</div>
+</body>
+</html>

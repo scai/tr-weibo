@@ -1,0 +1,46 @@
+/* CSS Document */
+
+body { font-size:14px; font-family:"Microsoft Yahei", Verdana, Sans-Serif;
+       background-image: url(noise.png); margin:0;   }
+
+a:link, a:visited { color: #ffffdd; text-decoration: none; }
+a:active, a:hover{ color: #ffffff; text-decoration: underline; }
+
+#about { background-color:#fff; max-width:600px; min-width:600px; 
+         border-radius:0 0 10px 10px; margin:0 auto 0 auto; padding:0;
+         text-align:left; font-size: 16px; color:#666;  }
+#about p { margin:0; padding:20px; }
+
+#login-box { position: fixed; bottom:0; left:0; right:0; }
+#login-box a { width:600px; height:60px;  border-radius:10px 10px 0 0; 
+             display:block; margin:0 auto 0 auto;
+             background: white url('login_48.png') center no-repeat; } 
+#login-box a:hover { background-color:#FFFFDD; }
+             
+#tr-logo { float:left; width:48px; height:48px; margin:20px; vertical-align:middle;
+           border-radius:5px; }        
+
+#screen { margin:0; padding:0; cursor:default; width:100%; }
+#stage { background-color:#fff; max-width:600px; min-width:600px; border-radius:10px;
+		 margin:40px auto 0 auto; padding:0; }
+#stage .status { padding:20px; text-align:left; font-size: 22px; }
+#stage .status .username { margin:5px; color:#666; font-size:20px; }
+#stage .status .text { margin:5px; color:#333; }
+#stage .status .thumbnail-pic { border:silver 1px solid; border-radius:5px; }
+#stage .status .avatar { float:right; margin:5px; border-radius:5px; }
+#stage .status .retweet { margin:10px 20px; background-color:#ededed; border-radius:5px; }
+#stage-content {  margin:0; padding:0 }
+#stage-wait { font-size: 22px; color: silver; text-align:center; padding:2em 0 2em 0; }
+
+#updated { display:inline; position:absolute; right:0; top:0; 
+	       padding:0.5em 1em 0.5em 1em; background-color:#FFFFEE;
+           font-size:16px; color: #666; border-radius:0 0 0 10px; }
+		   
+#toolbar { position:fixed; bottom:0; width:100%; height:30px;
+	       background-color:#333; color:#eee; font-size:12px;
+	       border-top:1px solid #555; margin:0; padding:2px; }
+#login { cursor:pointer; position:absolute; left:10px; top:3px; }
+#user-options ul { margin:5px 10px 0 10px; padding:0; list-style:none; font-size:12px; }
+#user-options ul li { margin:0 10px 0 0; padding:0; display:inline; }
+#user-options a:link, #user-options a:visited {text-decoration: none; padding:5px;  }
+#user-options a:hover, #user-options a:active {text-decoration: none; background-color:#eee; color:#333; border-radius:3px;  }

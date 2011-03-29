@@ -22,6 +22,7 @@ function bootstrap()
 	// jQuery ready
 	$(document).ready(function(){
 		$('#updated').hide();	
+		$('#post-panel').hide();
 			
 		$(document).keydown(function(event) {
           if (event.keyCode == '37') {
@@ -239,4 +240,8 @@ function onPrev() {
     idx -= 2;
     nextItem();
     onPause();
+}
+
+function onShowPostForm() {
+    $('#post-panel').slideDown();
 }

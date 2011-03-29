@@ -37,36 +37,40 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <a href="#" onclick="onLogin()"></a>
 </div>
   
-<div id="screen">
-  <div id="stage">
-    <div id="stage-content">
-        <div id="stage-wait">正在读取最新微博，请稍候。</div>
-    </div>
+<div id="stage">
+  <div id="stage-content">
+    <div id="stage-wait">正在读取最新微博，请稍候。</div>
   </div>
 </div>
 
 <div id="updated">更新中……</div>
 
 
+<!-- 工具栏（登录后显示） -->
 <div id="toolbar">
-
-  <!-- show after login -->
-  
   <div id="user-options">
   <ul>
   	<li><a href="#" onclick="onLogout()">
   	    <span>注销 [</span><span id="username">用户</span><span>]</span>
   	    </a>
   	</li>
-    <!--<li><a href="#">设定</a></li>-->
-	<!--<li><a href="#">帮助</a></li>-->
+  	<li><a href="#" onclick="onShowPostForm();" >写微博</a></li>
 	<li><a href="#" onclick="togglePause();" id="pause">暂停</a></li>
 	<li><a href="#" onclick="onPrev();" id="prev">&lt;&lt;</a></li>	
 	<li><a href="#" onclick="onNext();" id="next">&gt;&gt;</a></li>
 	<li><a href="#" onclick="onAbout();">关于 TR</a></li>
   </ul>
   </div>
-  
 </div>
+
+<!-- 发微博编辑器 -->
+<div id="slide-down-panel">
+<div id="post-panel">
+  <h3>发表微博</h3>
+  <div>
+  </div>
+</div>
+</div>
+
 </body>
 </html>

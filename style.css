@@ -21,16 +21,18 @@ a:active, a:hover{ color: #ffffff; text-decoration: underline; }
 #tr-logo { float:left; width:48px; height:48px; margin:20px; vertical-align:middle;
            border-radius:5px; }        
 
-#screen { margin:0; padding:0; cursor:default; width:100%; }
-#stage { background-color:#fff; max-width:600px; min-width:600px; border-radius:10px;
-		 margin:40px auto 0 auto; padding:0; }
-#stage .status { padding:20px; text-align:left; font-size: 22px; }
-#stage .status .username { margin:5px; color:#666; font-size:20px; }
+#stage { margin:40px 0 0 0; padding:0; }
+#stage-content {  
+    background-color:#fff; width:600px; border-radius:10px;
+    margin:0 auto 0 auto; padding:0 }
+#stage .status { 
+    padding:20px; text-align:justify; font-size: 20px;
+     }
+#stage .status .username { margin:5px; color:#666; font-size:80%; }
 #stage .status .text { margin:5px; color:#333; }
 #stage .status .thumbnail-pic { border:silver 1px solid; border-radius:5px; }
 #stage .status .avatar { float:right; margin:5px; border-radius:5px; }
 #stage .status .retweet { margin:10px 20px; background-color:#ededed; border-radius:5px; }
-#stage-content {  margin:0; padding:0 }
 #stage-wait { font-size: 22px; color: silver; text-align:center; padding:2em 0 2em 0; }
 
 #updated { display:inline; position:absolute; right:0; top:0; 
@@ -45,3 +47,10 @@ a:active, a:hover{ color: #ffffff; text-decoration: underline; }
 #user-options ul li { margin:0 10px 0 0; padding:0; display:inline; }
 #user-options a:link, #user-options a:visited {text-decoration: none; padding:5px;  }
 #user-options a:hover, #user-options a:active {text-decoration: none; background-color:#eee; color:#333; border-radius:3px;  }
+
+#post-panel {
+    width: 600px; height: 400px;
+    margin:0 auto 0 auto; 
+    background-color:#fefefe; border-radius:0 0 10px 10px;
+    border:solid 3px #ddd;
+}

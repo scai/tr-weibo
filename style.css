@@ -21,15 +21,14 @@ a:active, a:hover{ color: #ffffff; text-decoration: underline; }
 #tr-logo { float:left; width:48px; height:48px; margin:20px; vertical-align:middle;
            border-radius:5px; }        
 
-#stage { margin-top:auto 0 auto 0; padding:0; background-color:#333; }
-#stage ul { position:relative; overflow:hidden; list-style:none;}
-#stage li {  display:inline-block;
+#stage-wrapper { margin:10px 10px 0 10px; }
+#stage { padding:0; background-color:#333; 
+         position:relative; overflow:hidden; margin:0;}
+#stage ul { list-style:none; position:relative; display:block; vertical-align:top; }
+#stage li { display:inline-block; top:50%;
     background-color:#fff; width:600px; border-radius:10px;
-    margin:auto 10px auto 10px; padding:0 }
-    
-#stage .status { 
-    padding:20px; text-align:justify; font-size: 20px;
-     }
+    margin-left:20px; padding:1em 1em 1em 1em; }
+#stage .status { padding:0; text-align:justify; font-size: 20px; }
 #stage .status .username { margin:5px; color:#666; font-size:80%; }
 #stage .status .text { margin:5px; color:#333; }
 #stage .status .thumbnail-pic { border:silver 1px solid; border-radius:5px; }

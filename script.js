@@ -168,22 +168,17 @@ function updateLatest(latest) {
 	});
 	
 	idx = 0;
-	nextItem();
+	showItems();
 	
 }
 
-function nextItem() {
-    if(idx < 0) idx = 0;
-
+function showItems() {
     var ul = $('#stage ul').empty();
-    ul.css('width', items.length * 630);
+    ul.css('width', (items.length + 1) * 620);
     $.each(items, function(i, item) {
-        var content = $('<li>').addClass('card')
-                               .append(item)
-                               .appendTo(ul);
+        var li = $('<li>').addClass('card').append(item);
+        li.appendTo(ul);
     });
-                           
-	//slideShowHandle = setTimeout("nextItem()", slideShowInterval);
 }
 
 function render(entry) {
@@ -201,7 +196,7 @@ function render(entry) {
 		$(retweet).addClass('retweet');
 		retweet.appendTo(d);
 	}
-	return d
+	return d;
 }
 
 var pause = false;
@@ -223,25 +218,27 @@ function onPause() {
 
 function onResume() {
     $('#pause').text('暂停');
-    nextItem();
+    onNext();
 }
 
 var idx = 0;
 
 function onNext() {
-    notify('下一个');
-    idx++;
-    $('#stage ul').animate({
-        'left': -idx * 620
-    });
+    if(idx < items.length) {
+        idx++;
+        $('#stage ul').animate({
+            'left': -idx * 620
+        });
+    }
 }
 
 function onPrev() {
-    notify('前一个');
-    idx--;
-    $('#stage ul').animate({
-        'left': -idx * 620
-    });
+    if(idx > 0) {
+        idx--;
+        $('#stage ul').animate({
+            'left': -idx * 620
+        });
+    }
 }
 
 function onShowPostForm() {

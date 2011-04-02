@@ -130,6 +130,11 @@ function getCurrentUserInfo() {
 var activeTimeLine = "/statuses/public_timeline.json";
 var pollThreadHandle = 0;
 
+var idx = 0;
+
+// Current tweets JSON data.
+var tweets;
+
 function startPoll() {
     clearTimeout(pollThreadHandle);
     pollThread();
@@ -140,7 +145,8 @@ function pollThread() {
 		activeTimeLine,
 		function(sResult, bStatus) {
 			if(bStatus) {
-				updateLatest(sResult);
+			    tweets = sResult;
+				updateLatest();
 				notify("同步完成");
 			}
 		}, {}, {'method':'GET'}
@@ -154,35 +160,34 @@ function notify(msg) {
     $('#updated').text(msg).slideDown().delay(1000).slideUp();
 }
 
-var idx = 0;
-var items = new Array();
-var slideShowHandle = 0;
-var slideShowInterval = 7 * 1000;
 
-function updateLatest(latest) {
-	
-    clearTimeout(slideShowHandle);
-	items = new Array();
-	$.each(latest, function(i, entry) {
-		items.push(render(entry));
-	});
-	
-	idx = 0;
-	showItems();
-	
+function updateLatest() {	
+    $('#stage-wait').remove();
+    // show items
+    var carousel = $('#carousel').empty();
+
+    // Total cache cards must be odd number. The middle one is the main card.
+    // The rest are just buffer cards.
+    for(var i = 0; i < 5; i++)
+        carousel.append(renderInCard(tweets[i]).fadeIn());
+
+    // index of the middle card
+	idx = 3;
 }
 
-function showItems() {
-    var ul = $('#stage ul').empty();
-    ul.css('width', (items.length + 1) * 620);
-    $.each(items, function(i, item) {
-        var li = $('<li>').addClass('card').append(item);
-        li.appendTo(ul);
-    });
+function onCardClicked(event) {
+    var that = $(event.target);
+    var data = that.data('entry');
+}
+
+function renderInCard(entry) {
+    return $('<div>').addClass('card').append(render(entry));
 }
 
 function render(entry) {
 	var d = $('<div>').addClass('status');
+	d.data('entry', entry);
+	d.click(onCardClicked);
 	$('<img>').attr('src', entry.user.profile_image_url).addClass('avatar').appendTo(d);
 	$('<div>').text(entry.user.name).addClass('username').appendTo(d);
 	$('<div>').text(entry.text).addClass('text').appendTo(d);
@@ -211,34 +216,51 @@ function togglePause() {
     }   
 }
 
-function onPause() {
-    $('#pause').text('继续');
-    clearTimeout(slideShowHandle);
-}
-
-function onResume() {
-    $('#pause').text('暂停');
-    onNext();
-}
-
-var idx = 0;
-
+var ANIMATE_SPEED = 500;
+var canMove = true;
 function onNext() {
-    if(idx < items.length) {
-        idx++;
-        $('#stage ul').animate({
-            'left': -idx * 620
-        });
-    }
+    if(idx <= tweets.length - 1)
+        onMove(true);
 }
 
 function onPrev() {
-    if(idx > 0) {
+    if(idx >= 2)
+        onMove(false);
+}
+
+function onMove(isSlideToLeft) {
+    if(!canMove) return false;
+    
+    canMove = false;
+    var cardToDiscard, cardToAdd, fnAddAndRemove;
+    if(isSlideToLeft) {
+        cardToDiscard = $('#carousel .card:first');
+        idx++;
+        cardToAdd = renderInCard(tweets[idx+1]);
+        // dead card on the left, slide dead card
+        cardToDiscard.animate(
+            {width:0, height:0},
+            ANIMATE_SPEED,            
+            function() {                
+                $('#carousel').append(cardToAdd);
+                cardToDiscard.remove();                
+                canMove = true;
+            }
+        );
+    } else {
+        cardToDiscard =  $('#carousel .card:last');
         idx--;
-        $('#stage ul').animate({
-            'left': -idx * 620
-        });
+        cardToAdd = renderInCard(tweets[idx-1]);
+        // dead card on the right, slide new card
+        cardToDiscard.remove();                
+        cardToAdd.width(0).animate({width:580}, ANIMATE_SPEED);         
+        $('#carousel').prepend(cardToAdd);
+        canMove = true;
     }
+    
+    
+
+    return false;
 }
 
 function onShowPostForm() {

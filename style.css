@@ -6,10 +6,11 @@ body { font-size:14px; font-family:"Microsoft Yahei", Verdana, Sans-Serif;
 a:link, a:visited { color: #ffffdd; text-decoration: none; }
 a:active, a:hover{ color: #ffffff; text-decoration: underline; }
 
-#about { background-color:#fff; max-width:600px; min-width:600px; 
+#about { background-color:#fff; width:580px;
          border-radius:0 0 10px 10px; margin:0 auto 0 auto; padding:0;
          text-align:left; font-size: 16px; color:#666;  }
 #about p { margin:0; padding:20px; }
+#about .highlight { color:#005fbf;}
 
 #login-box { position: fixed; bottom:0; left:0; right:0;
              height:0; opacity:0; }
@@ -21,19 +22,21 @@ a:active, a:hover{ color: #ffffff; text-decoration: underline; }
 #tr-logo { float:left; width:48px; height:48px; margin:20px; vertical-align:middle;
            border-radius:5px; }        
 
-#stage-wrapper { margin:10px 10px 0 10px; }
-#stage { padding:0; background-color:#333; 
-         position:relative; overflow:hidden; margin:0;}
-#stage ul { list-style:none; position:relative; display:block; vertical-align:top; }
-#stage li { display:inline-block; top:50%;
-    background-color:#fff; width:600px; border-radius:10px;
-    margin-left:20px; padding:1em 1em 1em 1em; }
-#stage .status { padding:0; text-align:justify; font-size: 20px; }
-#stage .status .username { margin:5px; color:#666; font-size:80%; }
-#stage .status .text { margin:5px; color:#333; }
-#stage .status .thumbnail-pic { border:silver 1px solid; border-radius:5px; }
-#stage .status .avatar { float:right; margin:5px; border-radius:5px; }
-#stage .status .retweet { margin:10px 20px; background-color:#ededed; border-radius:5px; }
+#stage { overflow:hidden; margin:30px 0 0 0;}
+#carousel { position:relative; width: 30000px; left:50%; margin-left:-1500px; }
+
+#carousel .card { 
+    position: relative; vertical-align:top;
+    background-color:#fff; width:580px; border-radius:10px; padding:0; 
+    display:inline-block; margin:0 10px 0 10px; }
+#carousel .status { padding:20px; text-align:left; font-size: 20px; width:540px; 
+                    overflow:hidden; }
+#carousel .status .username { margin:5px; color:#666; font-size:80%; }
+#carousel .status .text { margin:5px; color:#333; }
+#carousel .status .thumbnail-pic { border:silver 1px solid; border-radius:5px; }
+#carousel .status .avatar { float:right; margin:5px; border-radius:5px; }
+#carousel .status .retweet { margin:10px; background-color:#ededed; 
+                             border-radius:5px; width:480px; }
 #stage-wait { font-size: 22px; color: silver; text-align:center; padding:2em 0 2em 0; }
 
 #updated { display:inline; position:absolute; right:0; top:0; 

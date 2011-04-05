@@ -1,7 +1,7 @@
 /* CSS Document */
 
 body { font-size:14px; font-family:"Microsoft Yahei", Verdana, Sans-Serif;
-       background-image: url(images/noise.png); margin:0;   }
+       background-image: url(../images/noise.png); margin:0;   }
 
 a:link, a:visited { color: #ffffdd; text-decoration: none; }
 a:active, a:hover{ color: #ffffff; text-decoration: underline; }
@@ -16,7 +16,7 @@ a:active, a:hover{ color: #ffffff; text-decoration: underline; }
              height:0; opacity:0; }
 #login-box a { width:600px; height:60px;  border-radius:10px 10px 0 0; 
              display:block; margin:0 auto 0 auto;
-             background: white url('images/login_48.png') center no-repeat; } 
+             background: white url('../images/login_48.png') center no-repeat; } 
 #login-box a:hover { background-color:#FFFFDD; }
              
 #tr-logo { float:left; width:48px; height:48px; margin:20px; vertical-align:middle;

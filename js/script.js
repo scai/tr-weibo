@@ -22,15 +22,24 @@ function bootstrap()
 	// jQuery ready
 	$(document).ready(function(){
 		$('#updated').hide();	
-		$('#post-panel').hide();
+		$('#post-panel').dialog({
+		    title: '发表微博',
+		    resizable: false,
+		    autoOpen: false,
+		    modal:true,
+		    height: 450,
+		    width: 600,
+		    buttons: [
+		        { text:"发表", click:onSubmitPost, id:'post-submit' },
+		        { text:"取消", click:function() { $(this).dialog('close'); } }		        
+		    ]
+		});
 			
 		$(document).keydown(function(event) {
           if (event.keyCode == '37') {
             onPrev();
           } else if (event.keyCode == '39') {
             onNext();
-          } else if (event.keyCode == '32') {
-            togglePause();
           } else {
             return true;
           }
@@ -204,18 +213,6 @@ function render(entry) {
 	return d;
 }
 
-var pause = false;
-function togglePause() {
-    pause = !pause;
-    if(pause) {
-        notify('暂停播放');
-        onPause();
-    } else {
-        notify('继续自动播放');
-        onResume();
-    }   
-}
-
 var ANIMATE_SPEED = 500;
 var canMove = true;
 function onNext() {
@@ -264,5 +261,37 @@ function onMove(isSlideToLeft) {
 }
 
 function onShowPostForm() {
-    $('#post-panel').slideDown();
+    $('#post-panel').dialog('open');
+}
+
+function onSubmitPost() {
+    var content = $('#post-content').val();
+    WB.client.parseCMD( 
+        "/statuses/update.json", 
+        function(sResult, bStatus) {
+            if(bStatus == true){
+                $('#post-content').val('');
+            } else {
+                alert('Ooops! Bug...tell Shaoting.');
+            }
+            $('#post-panel').dialog('close');
+            startPoll();
+        }, 
+        {
+            status : content
+        },
+        {
+            method: 'post'
+        }
+    );
+
+}
+
+function onPostContentChanged() {
+    var len = $('#post-content').val().length;
+    $('#post-chars-left').text(140 - len);
+    if(len > 140)
+        $('#post-submit').button( "disable" );
+    else 
+        $('#post-submit').button( "enable" );
 }

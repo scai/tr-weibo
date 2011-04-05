@@ -52,10 +52,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   <div id="user-options">
   <ul>
   	<li><a href="#" onclick="onLogout()">
-  	    <span>注销 [</span><span id="username">用户</span><span>]</span>
+  	    <span>退出 [&nbsp;</span><span id="username">我</span><span>&nbsp;]</span>
   	    </a>
   	</li>
   	<li><a href="#" onclick="onShowPostForm();" >写微博</a></li>
+  	<li><a href="#" onclick="startPoll();" >更新</a></li>
 	<li><a href="#" onclick="onPrev();" id="prev">&lt;&lt;</a></li>	
 	<li><a href="#" onclick="onNext();" id="next">&gt;&gt;</a></li>
 	<li><a href="#" onclick="onAbout();">关于 TR</a></li>
@@ -64,12 +65,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 </div>
 
 <!-- 发微博编辑器 -->
-<div id="slide-down-panel">
 <div id="post-panel">
-  <h3>发表微博</h3>
-  <div>
-  </div>
-</div>
+  <textarea id="post-content" rows="7" onkeyup="onPostContentChanged()"></textarea>
+  <div>还能输入<span id="post-chars-left">140</span>字</div>
 </div>
 
 </body>
